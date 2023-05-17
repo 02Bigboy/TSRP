@@ -31,7 +31,7 @@ def UTSP(similarity: torch.Tensor,
         similar[:, next_layer] = 0
         cur_layer = position[similar[next_layer, :].sum(0) > torch.zeros(similar[next_layer[0], :].size(), device=similar.device)].numpy().tolist()
         similar[next_layer, :] = 0
-        # similar[:, next_layer] = 0  # 这个放前面取感觉可以可以不用下面的diff
+        # similar[:, next_layer] = 0  
         # next_layer = np.setdiff1d(cur_layer, next_layer)
         next_layer = cur_layer
     return span_tree
